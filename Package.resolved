@@ -1,0 +1,24 @@
+{
+  "originHash" : "8bce35dfd5b4d2bbaad2621d35e1046cfbcab559da12b68524f07f8e1c733e79",
+  "pins" : [
+    {
+      "identity" : "pelicanswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dkoster95/PelicanSwift.git",
+      "state" : {
+        "revision" : "5fb8d588edc94bf4c475abca8587d4cb09558361",
+        "version" : "3.1.1"
+      }
+    },
+    {
+      "identity" : "quickhatchcore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dkoster95/QuickHatchCore.git",
+      "state" : {
+        "revision" : "9bf3e99177f177414d90fe3fb2509a3afc0bb40b",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
