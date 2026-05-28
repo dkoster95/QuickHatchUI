@@ -10,30 +10,35 @@ import QuickHatchCore
 @MainActor
 public protocol AsyncImageViewModelable: Sendable {
     var data: Data? { get set }
-    func reload() async throws
+    func reload() async
 }
 
 @Observable
 public class AsyncImageViewModel: AsyncImageViewModelable {
     public var data: Data?
+    private let defaultData: Data?
     @ObservationIgnored private let url: String
     @ObservationIgnored private let dataProvider: any FindImageDataProvidable
     
-    public init(data: Data? = nil, dataProvider: any FindImageDataProvidable, url: String) {
+    public init(data: Data? = nil,
+                defaultData: Data? = nil,
+                dataProvider: any FindImageDataProvidable,
+                url: String) {
         self.data = data
         self.dataProvider = dataProvider
         self.url = url
+        self.defaultData = defaultData
         Task {
-            try await reload()
+            await reload()
         }
     }
     
-    public func reload() async throws {
+    public func reload() async {
         do {
             let imageData = try await dataProvider.execute(url)
             self.data = imageData
-        } catch let error {
-            // Empty Image
+        } catch _ {
+            self.data = defaultData
         }
     }
 }
