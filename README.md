@@ -34,7 +34,7 @@ struct ProfileCardView: View {
     let viewModel: AsyncImageViewModelable // Injected protocol bound to @MainActor
     
     var body: some View {
-        VCard {
+        VStack {
             AsyncImageV2(
                 viewModel: viewModel,
                 imageModifiers: { image in
@@ -82,6 +82,10 @@ final class MockImageViewModel: AsyncImageViewModelable {
 
     init(data: Data? = nil) {
         self.data = data
+    }
+    
+    func reload() async {
+
     }
 }
 
